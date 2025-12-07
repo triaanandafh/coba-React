@@ -34,10 +34,29 @@ const CodeReviewFeedback = () => {
     setFeedback(prev => {
       return (
         prev.map((item, i) => {
-          return i === index ? operatinName === "upvote" ? 
-          { ...item, upvote: item.upvote + 1 } : 
-          { ...item, downvote: item.downvote + 1 } : 
-          item;
+        //   return i === index ? operatinName === "upvote" ? 
+        //   { ...item, upvote: item.upvote + 1 } : 
+        //   { ...item, downvote: item.downvote + 1 } : 
+        //   item;
+        // VERSI MUDAH DIPAHAMI:
+         // Jika index tidak sama, cukup kembalikan item apa adanya
+            if (i !== index) {
+                return item;
+            }
+
+            // Jika tombol yang ditekan adalah "upvote"
+            if (operatinName === "upvote") {
+                return {
+                ...item,          // copy data lama
+                upvote: item.upvote + 1
+                };
+            }
+
+            // Jika tombol adalah "downvote"
+            return {
+                ...item,
+                downvote: item.downvote + 1
+            };
         })
         // .map buat ngejalanin tiap item di array feedback
         // ...item untuk nyebarin properti item yang lama, terus upvote: item.upvote + 1 buat nambahin upvote nya
@@ -49,7 +68,12 @@ const CodeReviewFeedback = () => {
     <div className="my-0 mx-auto text-center w-mx-1200">
         <div className="flex wrap justify-content-center mt-30 gap-30">
             {
-                feedback.map(({ reviewName, upvote, downvote }, i) => {
+                feedback.map((item, i) => {
+
+                    // Ambil properti secara manual
+                    const reviewName = item.reviewName;
+                    const upvote = item.upvote;
+                    const downvote = item.downvote;
             return (
             <div className="pa-10 w-300 card"  key={i}>
                 <h2>{reviewName}</h2>
