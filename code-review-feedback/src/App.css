@@ -1,0 +1,121 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+/* Reset dasar */
+* {
+  box-sizing: border-box;
+}
+
+/* Container Utama */
+.w-mx-1200 {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Flexbox Layout (Ini kuncinya biar berjajar) */
+.flex {
+  display: flex;
+}
+
+.wrap {
+  flex-wrap: wrap; /* Ini yang bikin kalau gak muat dia turun ke bawah (3 atas, 2 bawah) */
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+/* Mengatur Jarak (Spacing) */
+.gap-30 {
+  gap: 30px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.my-30 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.my-10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mx-0 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.pa-10 {
+  padding: 10px;
+}
+
+.py-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.px-15 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Styling Kartu */
+.w-300 {
+  width: 300px; /* Lebar kartu */
+}
+
+.card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px; /* Biar ujungnya tumpul */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Efek bayangan */
+}
+
+/* Styling Tombol */
+button {
+  background-color: #2ecc71; /* Warna HIJAU (Default Upvote) */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: #27ae60;
+}
+
+/* Tombol Merah (Downvote) */
+.danger {
+  background-color: #e74c3c !important; /* Warna MERAH */
+}
+
+.danger:hover {
+  background-color: #c0392b !important;
+}
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
