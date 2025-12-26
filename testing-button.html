@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+     <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+    <script type="text/babel">
+
+        function HomePage() {
+            const [count, setCount] = React.useState(0);
+
+            return (
+                <div>
+          <button onClick={() => setCount(count - 1)}>-</button>
+          <span style={{ margin: "0 10px" }}>{count}</span>
+          <button onClick={() => setCount(count + 1)}>+</button>
+
+          <br /><br />
+
+          <button onClick={() => setCount(0)}>Reset!</button>
+        </div>
+            );
+        }
+        
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<HomePage />);
+    </script>
+</body>
+</html>
