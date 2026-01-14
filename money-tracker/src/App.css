@@ -1,0 +1,225 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #845ef7;
+  --primary-hover: #7048e8;
+  --bg-main: #f3f4f6;
+  --bg-card: #ffffff;
+  --text-dark: #1f2937;
+  --text-muted: #6b7280;
+  --border-light: #e5e7eb;
+  --success: #10b981;
+  --danger: #ef4444;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+/* --- MAIN LAYOUT (Dua Kolom Seimbang) --- */
+.main-container {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  max-width: 1000px; /* Lebar total container */
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* KUNCI PERUBAHAN DI SINI: flex: 1 dua-duanya */
+.form-section, .history-section {
+  flex: 1; /* Sama-sama ambil 1 bagian (50:50) */
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  /* Supaya tinggi card mengikuti konten, tapi minimal sama tingginya kalau mau */
+  min-width: 320px;
+  max-width: 480px;
+  width: 100%;
+}
+
+h2 {
+  color: var(--text-dark);
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+h3 {
+  color: var(--text-dark);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* --- COMPONENT STYLES --- */
+.toggle-wrapper {
+  background-color: #f3f4f6;
+  padding: 4px;
+  border-radius: var(--radius-md);
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn.active {
+  background-color: white;
+  color: var(--text-dark);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.form-group { margin-bottom: 20px; }
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid var(--border-light);
+  background-color: #fff;
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-field:focus {
+  border-color: var(--primary);
+}
+
+.save-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.save-btn:hover { background-color: var(--primary-hover); }
+
+/* --- HISTORY LIST (Lebih Lega) --- */
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-light);
+  position: relative;
+  gap: 15px; /* Memberi jarak antar elemen di dalam baris */
+}
+
+.history-icon {
+  width: 50px; /* Ikon sedikit lebih besar */
+  height: 50px;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0; /* Ikon dilarang mengecil */
+}
+
+.history-details {
+  flex-grow: 1;
+  overflow: hidden; /* Biar teks panjang gak ngerusak layout */
+}
+
+.history-details h4 {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-details p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.history-amount {
+  font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.history-amount.plus { color: var(--success); }
+.history-amount.minus { color: var(--danger); }
+
+/* Tombol Hapus: Sekarang nempel di sebelah kanan harga */
+.delete-btn-small {
+  background-color: var(--danger);
+  color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.history-item:hover .delete-btn-small {
+  opacity: 1;
+}
+
+/* Responsif HP */
+@media (max-width: 768px) {
+  .main-container { flex-direction: column; }
+  .form-section, .history-section { width: 100%; }
+}
