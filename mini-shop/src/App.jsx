@@ -1,11 +1,38 @@
 import { useState } from 'react'
-import {Button, Typography, Container, Box, ThemeProvider} from '@mui/material'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import './App.css'
+import { Container, Box, Typography, CssBaseline } from '@mui/material'
+import { createTheme, ThemeProvider } from '@mui/material/styles'; // <--- 1. Import ini
 import Navbar from './components/Navbar.jsx'
 import ProductList from './components/ProductList.jsx'
-import CartDrawer from './components/CartDrawer.jsx'  
+import CartDrawer from './components/CartDrawer.jsx' 
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#4F46E5', // Warna Indigo/Ungu 
+    },
+    background: {
+      default: '#F9FAFB', // Latar belakang abu-abu 
+      paper: '#FFFFFF',
+    },
+    text: {
+      primary: '#111827', // Hitam 
+      secondary: '#6B7280', // 
+    },
+  },
+  shape: {
+    borderRadius: 16, 
+  },
+  typography: {
+    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif', 
+    h6: {
+      fontWeight: 700, 
+    },
+    button: {
+      textTransform: 'none', 
+      fontWeight: 600,
+    }
+  }
+});
 
 function App() {
 
@@ -24,20 +51,21 @@ function App() {
     setCartItems(newCartItems);
   }
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />   {/* Ini buat reset CSS biar backgroundnya ngikut tema */}
     <Navbar cartCount={cartItems.length}
     onCartClick={() => setIsDrawerOpen(true)} />   {/* Mengapa tidak pakai onCardClick={handleCartClick}? Karena tujuannya bukan untuk menambah barang, tapi membuka laci. */}
       
       {/* Drawer/Sidebar */}
       <CartDrawer cartItems={cartItems} isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} onRemoveItem={handleRemoveFromCart} />
       
-      <Container sx={{ marginTop: 6, marginBottom: 6 }}>
+      <Container sx={{ marginTop: 6, marginBottom: 8 }}>
         {/* Header Teks */}
-        <Box sx={{ textAlign: 'center', marginBottom: 5 }}>
-          <Typography variant="h4" gutterBottom fontWeight="bold">
+        <Box sx={{ textAlign: 'center', marginBottom: 6 }}>
+          <Typography variant="h3" gutterBottom fontWeight="bold" sx={{ color: '#111827' }}>
             Katalog Produk Spesial 🔥
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="h6" color="text.secondary" sx={{ fontWeight: 'normal' }}>
             Temukan barang impianmu dengan harga terbaik hari ini.
           </Typography>
         </Box>
@@ -47,7 +75,7 @@ function App() {
 
       </Container>
       
-    </>
+    </ThemeProvider>
   )
 }
 

@@ -58,7 +58,7 @@ export default function ProductList({ onAddToCart }) {
     <Grid container spacing={4}>
         {products.map((product) => (
             <Grid key={product.id} size={{ xs:12, sm:6, md:4 }}>
-                <Card sx={{ height:'100%', display:'flex', flexDirection: 'column' }}>
+                <Card sx={{ height:'100%', display:'flex', flexDirection: 'column'}}>
                     <CardMedia 
                     image={product.image}
                     component="img"
@@ -70,8 +70,8 @@ export default function ProductList({ onAddToCart }) {
                         <Typography variant="body2" color='primary'>{formatRupiah(product.price)}</Typography>
                         <Typography variant="body2" color='text.secondary' paragraph>{product.description}</Typography>
                     </CardContent>
-                    <CardActions>
-                        <Button size="small" variant='contained' startIcon={<AddShoppingCartIcon />} onClick={() => onAddToCart(product)}>Beli</Button>
+                    <CardActions  sx={{ mb:2 }}>
+                        <Button size="small" variant='contained' startIcon={<AddShoppingCartIcon />} onClick={() => onAddToCart(product)} sx={{px: 3, py:1, borderRadius:8}}>Beli</Button>
                         <Button size="small" color='primary'>Detail</Button>
                     </CardActions>
                 </Card>

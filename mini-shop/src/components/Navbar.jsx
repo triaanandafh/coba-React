@@ -1,33 +1,36 @@
 import React from "react";
 import { AppBar, Toolbar, Typography, IconButton, Badge, Box } from "@mui/material";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import StorefrontIcon from '@mui/icons-material/Storefront'; //icon toko
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
+import StorefrontIcon from '@mui/icons-material/StorefrontTwoTone'; //icon toko
 
 export default function Navbar({ cartCount, onCartClick }) {
     return (
-        <AppBar position="static">
-            <Toolbar>
+        <AppBar position="sticky" color="inherit" elevation={0} sx={{ borderBottom: '1px solid #E5E7EB', backgroundColor: 'rgba(255,255,255,0.8)', backdropFilter: 'blur(8px)' }}>
+            <Toolbar sx={{ height: 80 }}>
                 <IconButton
                     size="large"
                     edge="start"
-                    color="inherit"
+                    color="primary"
                     aria-label="logo"
-                    sx={{ mr: 2 }}
+                    sx={{ mr: 1 }}
                 >
-                    <StorefrontIcon />
+                    <StorefrontIcon fontSize="large" />
                 </IconButton>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                <Typography variant="h5" component="div" sx={{ flexGrow: 1, fontWeight: 800, letterSpacing: '-0.5px', color: '#111827' }}>
                     Mini Shop
                 </Typography>
                 <IconButton
                     size="large"
                     edge="end"
-                    color="inherit"
+                    color="default"
                     aria-label="show cart items"
-                    onClick={onCartClick
-                    }
+                    onClick={onCartClick}
+                    sx={{ 
+              backgroundColor: '#F3F4F6', 
+              '&:hover': { backgroundColor: '#E5E7EB' } // Efek hover bulat
+            }}
                 >
-                    <Badge badgeContent={cartCount} color="error">
+                    <Badge badgeContent={cartCount} color="primary">
                         <ShoppingCartIcon />
                     </Badge>
                 </IconButton>
