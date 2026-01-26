@@ -38,7 +38,6 @@ function App() {
 
       {isGameComplete && <WinMessage moves={moves} />}
 
-      // Di dalam App.jsx
 <div className="cards-grid">
   {cards.map((card) => (
     <Card 
